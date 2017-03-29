@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },<% if (useBabel) { %>
       babel: {
-        files: ['<%%= config.app %>/scripts/{,*/}*.js'],
+        files: ['<%%= config.app %>/js/{,*/}*.js'],
         tasks: ['babel:dist']
       },
       babelTest: {
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
         tasks: ['babel:test', 'test:watch']
       },<% } else { %>
       js: {
-        files: ['<%%= config.app %>/scripts/{,*/}*.js'],
+        files: ['<%%= config.app %>/js/{,*/}*.js'],
         tasks: ['eslint']
       },
       jstest: {
@@ -56,12 +56,12 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },<% if (includeSass) { %>
       sass: {
-        files: ['<%%= config.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%%= config.app %>/css/{,*/}*.{scss,sass}'],
         tasks: ['sass', 'postcss']
       },<% } %>
       styles: {
-        files: ['<%%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
+        files: ['<%%= config.app %>/css/{,*/}*.css'],
+        tasks: ['newer:copy:css', 'postcss']
       }
     },
 
@@ -77,10 +77,10 @@ module.exports = function (grunt) {
         options: {
           files: [
             '<%%= config.app %>/{,*/}*.html',
-            '.tmp/styles/{,*/}*.css',
-            '<%%= config.app %>/images/{,*/}*',<% if (useBabel) { %>
-            '.tmp/scripts/{,*/}*.js'<% } else { %>
-            '<%%= config.app %>/scripts/{,*/}*.js'<% } %>
+            '.tmp/css/{,*/}*.css',
+            '<%%= config.app %>/img/{,*/}*',<% if (useBabel) { %>
+            '.tmp/js/{,*/}*.js'<% } else { %>
+            '<%%= config.app %>/js/{,*/}*.js'<% } %>
           ],
           port: 9000,
           server: {
